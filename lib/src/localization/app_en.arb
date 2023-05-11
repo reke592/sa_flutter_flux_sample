@@ -1,0 +1,13 @@
+{
+  "appTitle": "sa_flutter_flux_sample",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "lTodos": "Todos",
+  "lTask": "Task",
+  "lTags": "Tags",
+  "lStages": "Stages",
+  "lSettings": "Settings",
+  "lCreateTask": "Create Task",
+  "lAssignTask": "Assign Task"
+}
