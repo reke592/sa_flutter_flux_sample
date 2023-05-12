@@ -9,7 +9,10 @@ class LoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Selector<TodoStore, bool>(
       selector: (context, store) =>
-          store.isLoadingStages || store.isLoadingTags || store.isLoadingTodos,
+          store.isLoadingStages ||
+          store.isLoadingTags ||
+          store.isLoadingTodos ||
+          store.isLoadingManpower,
       builder: (context, isLoading, child) {
         return Visibility(
           visible: isLoading,

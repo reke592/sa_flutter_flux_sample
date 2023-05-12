@@ -22,16 +22,8 @@ class LoadTodo extends StoreAction<TodoStore, LoadTodoParams, List<Todo>> {
       store.commit(TodoTypeEvents.loading, true);
       // make api call using payload.sprintId
       // dummy process
-      await Future.delayed(const Duration(seconds: 5));
-      return List.generate(
-        10,
-        (index) => Todo(
-          id: index + 1,
-          sprintId: payload.sprintId,
-          task: 'generated sample $index',
-          dateCreated: DateTime.now(),
-        ),
-      );
+      await Future.delayed(const Duration(seconds: 1));
+      return [];
     } catch (e) {
       rethrow;
     } finally {

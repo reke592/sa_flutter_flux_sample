@@ -4,16 +4,22 @@ import 'package:provider/provider.dart';
 import 'package:sa_flutter_flux_sample/src/commons/responsive_provider.dart';
 import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
 import 'package:sa_flutter_flux_sample/src/settings/settings_view.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/components/fabs/manpower_fab.dart';
 import 'package:sa_flutter_flux_sample/src/todos/presentation/components/fabs/stage_screen_fab.dart';
 import 'package:sa_flutter_flux_sample/src/todos/presentation/components/fabs/tags_screen_fab.dart';
 import 'package:sa_flutter_flux_sample/src/todos/presentation/components/fabs/todos_screen_fab.dart';
 import 'package:sa_flutter_flux_sample/src/todos/presentation/components/loading_indicator.dart';
-import 'package:sa_flutter_flux_sample/src/todos/presentation/stages_screen.dart';
-import 'package:sa_flutter_flux_sample/src/todos/presentation/tags_screen.dart';
-import 'package:sa_flutter_flux_sample/src/todos/presentation/tasks_screen.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/screens/manpower_screen.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/screens/project_info_screen.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/screens/stages_screen.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/screens/tags_screen.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/screens/tasks_screen.dart';
+import 'package:sa_flutter_flux_sample/src/todos/store/actions/load_manpower.dart';
+import 'package:sa_flutter_flux_sample/src/todos/store/actions/load_project.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/actions/load_stages.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/actions/load_tags.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/actions/load_todo.dart';
+import 'package:sa_flutter_flux_sample/src/todos/store/data/project.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 
 class TodosPage extends StatefulWidget {
@@ -37,9 +43,11 @@ class _TodosPage extends State<TodosPage> {
   Widget? fab;
 
   final List<String> routeNames = [
+    ProjectInfoScreen.routeName,
     TasksScreen.routeName,
     TagsScreen.routeName,
     StagesScreen.routeName,
+    ManpowerScreen.routeName,
     SettingsView.routeName,
   ];
 
@@ -47,9 +55,13 @@ class _TodosPage extends State<TodosPage> {
     TasksScreen.routeName: const TodosScreenFab(),
     TagsScreen.routeName: const TagsScreenFab(),
     StagesScreen.routeName: const StageScreenFab(),
+    ManpowerScreen.routeName: const ManpowerScreenFab(),
   };
 
   late final List<void Function(BuildContext)> railActions = [
+    (context) {
+      context.go(ProjectInfoScreen.routeName);
+    },
     (context) {
       context.go(TasksScreen.routeName);
     },
@@ -60,17 +72,32 @@ class _TodosPage extends State<TodosPage> {
       context.go(StagesScreen.routeName);
     },
     (context) {
+      context.go(ManpowerScreen.routeName);
+    },
+    (context) {
       context.go(SettingsView.routeName);
     }
   ];
 
   final List<NavigationRailDestination> destinations = [
     NavigationRailDestination(
-      icon: const Icon(Icons.task),
+      icon: const Icon(Icons.info_outline),
+      label: Selector<TodoStore, Project>(
+        selector: (_, pvd) => pvd.project,
+        builder: (context, value, child) {
+          return Text(
+              '${localString.lProjectInfoScreenTitle} (${value.project})');
+        },
+      ),
+    ),
+    NavigationRailDestination(
+      icon: const Icon(Icons.note_alt_outlined),
       label: Selector<TodoStore, int>(
         selector: (_, pvd) => pvd.todos.length,
         builder: (context, value, child) {
-          return Text('${localString.lTask} ($value)');
+          return Text(
+            '${localString.lTaskScreenTitle} ${value > 0 ? '($value)' : ''}',
+          );
         },
       ),
     ),
@@ -79,7 +106,9 @@ class _TodosPage extends State<TodosPage> {
       label: Selector<TodoStore, int>(
         selector: (_, pvd) => pvd.tags.length,
         builder: (context, value, child) {
-          return Text('${localString.lTags} ($value)');
+          return Text(
+            '${localString.lTagsScreenTitle} ${value > 0 ? '($value)' : ''}',
+          );
         },
       ),
     ),
@@ -88,7 +117,20 @@ class _TodosPage extends State<TodosPage> {
       label: Selector<TodoStore, int>(
         selector: (_, pvd) => pvd.stages.length,
         builder: (context, value, child) {
-          return Text('${localString.lStages} ($value)');
+          return Text(
+            '${localString.lStagesScreenTitle} ${value > 0 ? '($value)' : ''}',
+          );
+        },
+      ),
+    ),
+    NavigationRailDestination(
+      icon: const Icon(Icons.group),
+      label: Selector<TodoStore, int>(
+        selector: (_, pvd) => pvd.manpower.length,
+        builder: (context, value, child) {
+          return Text(
+            '${localString.lManpowerScreenTitle} ${value > 0 ? '($value)' : ''}',
+          );
         },
       ),
     ),
@@ -102,9 +144,11 @@ class _TodosPage extends State<TodosPage> {
   void initState() {
     debugPrint('-- $runtimeType.initState');
     context.read<TodoStore>()
+      ..dispatch(LoadProject(LoadProjectParams(projectId: 1)))
       ..dispatch(LoadTags(LoadTagsParams(sprintId: 1)))
       ..dispatch(LoadStages(LoadStagesParams(sprintId: 1)))
-      ..dispatch(LoadTodo(LoadTodoParams(sprintId: 1)));
+      ..dispatch(LoadTodo(LoadTodoParams(sprintId: 1)))
+      ..dispatch(LoadManpower(LoadManpowerParam()));
 
     super.initState();
   }
@@ -119,7 +163,7 @@ class _TodosPage extends State<TodosPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(localString.lTodos),
+            Text(localString.lTodosPageTitle),
             const LoadingIndicator(),
           ],
         ),

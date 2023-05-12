@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sa_flutter_flux_sample/src/commons/responsive_provider.dart';
-import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/todo_dialogs.dart';
 
 class TodosScreenFab extends StatelessWidget {
   const TodosScreenFab({super.key});
@@ -16,9 +16,7 @@ class TodosScreenFab extends StatelessWidget {
           spacing: 8,
           children: [
             ElevatedButton(
-              onPressed: () {
-                context.read<TodoStore>();
-              },
+              onPressed: () => TodoDialogs.showTodoForm(context),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Wrap(
@@ -31,22 +29,6 @@ class TodosScreenFab extends StatelessWidget {
                 ),
               ),
             ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.read<TodoStore>();
-            //   },
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Wrap(
-            //       spacing: 8,
-            //       crossAxisAlignment: WrapCrossAlignment.center,
-            //       children: [
-            //         const Icon(Icons.assignment_ind),
-            //         if (isMobile) const Text('Assign Task'),
-            //       ],
-            //     ),
-            //   ),
-            // ),
           ],
         );
       },

@@ -1,34 +1,29 @@
 import 'package:sa_flutter_flux_sample/src/commons/entity.dart';
 
-class Stage extends IEntity<int, Stage> {
-  final String name;
-  final bool isInitial;
-
-  Stage({
+class Employee extends IEntity<int, Employee> {
+  Employee({
     required super.id,
     required this.name,
-    required this.isInitial,
   });
+
+  final String name;
 
   @override
   Map<String, dynamic> asMap() {
     return {
       'id': id,
       'name': name,
-      'is_initial': isInitial,
     };
   }
 
   @override
-  Stage copyWith({
+  Employee copyWith({
     int? id,
     String? name,
-    bool? isInitial,
   }) {
-    return Stage(
+    return Employee(
       id: id ?? this.id,
       name: name ?? this.name,
-      isInitial: isInitial ?? this.isInitial,
     );
   }
 }

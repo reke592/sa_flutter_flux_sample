@@ -22,12 +22,12 @@ class LoadStages extends StoreAction<TodoStore, LoadStagesParams, List<Stage>> {
       store.commit(StageTypeEvents.loading, true);
       // make api call using payload.sprintId
       // dummy process
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
       return [
-        Stage(id: 1, name: 'Pooling', items: []),
-        Stage(id: 1, name: 'Ongoing', items: []),
-        Stage(id: 1, name: 'Completed', items: []),
-        Stage(id: 1, name: 'Parked', items: []),
+        Stage(id: 1, name: 'Unassigned', isInitial: true),
+        Stage(id: 2, name: 'Ongoing', isInitial: false),
+        Stage(id: 3, name: 'Completed', isInitial: false),
+        Stage(id: 4, name: 'Parked', isInitial: false),
       ];
     } catch (e) {
       rethrow;

@@ -3,11 +3,15 @@
   "@appTitle": {
     "description": "The title of the application"
   },
-  "lTodos": "Todos",
-  "lTask": "Task",
-  "lTags": "Tags",
-  "lStages": "Stages",
+  "lTodosPageTitle": "Todos",
+  "lTaskScreenTitle": "Tasks",
+  "lTagsScreenTitle": "Tags",
+  "lStagesScreenTitle": "Stages",
   "lSettings": "Settings",
   "lCreateTask": "Create Task",
-  "lAssignTask": "Assign Task"
+  "lTaskInfo": "Task Info",
+  "lAssignTask": "Assign to",
+  "lAssignStage": "Stage",
+  "lManpowerScreenTitle": "Manpower",
+  "lProjectInfoScreenTitle": "Project Info"
 }
