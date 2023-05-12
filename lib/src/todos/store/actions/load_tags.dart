@@ -4,8 +4,8 @@ import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 import 'package:sa_flutter_flux/sa_flutter_flux.dart';
 
 class LoadTagsParams {
-  int sprintId;
-  LoadTagsParams({required this.sprintId});
+  int projectId;
+  LoadTagsParams({required this.projectId});
 }
 
 class LoadTags extends StoreAction<TodoStore, LoadTagsParams, List<Tag>> {
@@ -20,7 +20,7 @@ class LoadTags extends StoreAction<TodoStore, LoadTagsParams, List<Tag>> {
   Future<List<Tag>> effect(store) async {
     try {
       store.commit(TagEvents.loading, true);
-      // make api call using payload.sprintId
+      // make api call using payload.projectId
       // dummy process
       await Future.delayed(const Duration(seconds: 1));
       return [

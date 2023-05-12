@@ -4,8 +4,8 @@ import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 import 'package:sa_flutter_flux/sa_flutter_flux.dart';
 
 class LoadTodoParams {
-  int sprintId;
-  LoadTodoParams({required this.sprintId});
+  int projectId;
+  LoadTodoParams({required this.projectId});
 }
 
 class LoadTodo extends StoreAction<TodoStore, LoadTodoParams, List<Todo>> {
@@ -20,7 +20,7 @@ class LoadTodo extends StoreAction<TodoStore, LoadTodoParams, List<Todo>> {
   Future<List<Todo>> effect(store) async {
     try {
       store.commit(TodoTypeEvents.loading, true);
-      // make api call using payload.sprintId
+      // make api call using payload.projectId
       // dummy process
       await Future.delayed(const Duration(seconds: 1));
       return [];

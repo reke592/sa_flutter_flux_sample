@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
 

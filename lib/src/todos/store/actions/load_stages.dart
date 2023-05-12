@@ -4,8 +4,8 @@ import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 import 'package:sa_flutter_flux/sa_flutter_flux.dart';
 
 class LoadStagesParams {
-  int sprintId;
-  LoadStagesParams({required this.sprintId});
+  int projectId;
+  LoadStagesParams({required this.projectId});
 }
 
 class LoadStages extends StoreAction<TodoStore, LoadStagesParams, List<Stage>> {
@@ -20,7 +20,7 @@ class LoadStages extends StoreAction<TodoStore, LoadStagesParams, List<Stage>> {
   Future<List<Stage>> effect(store) async {
     try {
       store.commit(StageTypeEvents.loading, true);
-      // make api call using payload.sprintId
+      // make api call using payload.projectId
       // dummy process
       await Future.delayed(const Duration(seconds: 1));
       return [

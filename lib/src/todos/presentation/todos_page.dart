@@ -145,9 +145,9 @@ class _TodosPage extends State<TodosPage> {
     debugPrint('-- $runtimeType.initState');
     context.read<TodoStore>()
       ..dispatch(LoadProject(LoadProjectParams(projectId: 1)))
-      ..dispatch(LoadTags(LoadTagsParams(sprintId: 1)))
-      ..dispatch(LoadStages(LoadStagesParams(sprintId: 1)))
-      ..dispatch(LoadTodo(LoadTodoParams(sprintId: 1)))
+      ..dispatch(LoadTags(LoadTagsParams(projectId: 1)))
+      ..dispatch(LoadStages(LoadStagesParams(projectId: 1)))
+      ..dispatch(LoadTodo(LoadTodoParams(projectId: 1)))
       ..dispatch(LoadManpower(LoadManpowerParam()));
 
     super.initState();
