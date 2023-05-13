@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sa_flutter_flux_sample/src/commons/responsive_provider.dart';
+import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/todo_dialogs.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 
 class StageScreenFab extends StatelessWidget {
@@ -16,9 +18,7 @@ class StageScreenFab extends StatelessWidget {
           spacing: 8,
           children: [
             ElevatedButton(
-              onPressed: () {
-                context.read<TodoStore>();
-              },
+              onPressed: () => TodoDialogs.showStageForm(context),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Wrap(
@@ -26,7 +26,7 @@ class StageScreenFab extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     const Icon(Icons.add),
-                    if (isMobile) const Text('Create Stage'),
+                    if (isMobile) Text(localString.lCreateStage),
                   ],
                 ),
               ),

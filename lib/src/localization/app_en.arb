@@ -1,17 +1,40 @@
 {
+  "@@locale": "en",
   "appTitle": "sa_flutter_flux_sample",
   "@appTitle": {
     "description": "The title of the application"
   },
+  "lLanguage": "Language",
+  "lTheme": "Theme",
   "lTodosPageTitle": "Todos",
   "lTaskScreenTitle": "Tasks",
   "lTagsScreenTitle": "Tags",
   "lStagesScreenTitle": "Stages",
   "lSettings": "Settings",
   "lCreateTask": "Create Task",
+  "lCreateStage": "Create Stage",
   "lTaskInfo": "Task Info",
   "lAssignTask": "Assign to",
   "lAssignStage": "Stage",
+  "lInitialStage": "Initial Stage",
   "lManpowerScreenTitle": "Manpower",
-  "lProjectInfoScreenTitle": "Project Info"
+  "lProjectInfoScreenTitle": "Project Info",
+  "lError": "Error",
+  "lConfirm": "Confirm",
+  "lProceed": "Proceed",
+  "lCancel": "Cancel",
+  "lDiscard": "Discard",
+  "confirmUpdateInitialStage": "This will replace the initial stage `{stageName}` when creating new Task, do you want to continue?",
+  "@confirmUpdateInitialStage": {
+    "description": "confirmation message for Stage when `isInitial` value is equal to `true`",
+    "placeholders": {
+      "stageName": {
+        "type": "String"
+      }
+    }
+  },
+  "eTaskDescriptionRequired": "Task description is required",
+  "eAtleastOneInitialStage": "There should be atleast one initial stage",
+  "eMustUpdateStage" :"Must update the stage",
+  "eMustAssignManpower": "Must assign a manpower"
 }

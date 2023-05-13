@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sa_flutter_flux_sample/src/commons/responsive_provider.dart';
+import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
 import 'package:sa_flutter_flux_sample/src/todos/presentation/todo_dialogs.dart';
 
 class TodosScreenFab extends StatelessWidget {
@@ -24,7 +25,7 @@ class TodosScreenFab extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     const Icon(Icons.assignment_add),
-                    if (isMobile) const Text('Create Task'),
+                    if (isMobile) Text(localString.lCreateTask),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
 
 abstract class MessageDialog {
   MessageDialog._();
@@ -16,7 +17,7 @@ abstract class MessageDialog {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Error'),
+              Text(localString.lError),
               Icon(
                 Icons.error,
                 color: Theme.of(context).colorScheme.error,
@@ -37,5 +38,30 @@ abstract class MessageDialog {
         );
       },
     );
+  }
+
+  static Future<bool> confirm(BuildContext context, String message) {
+    return showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: Text(localString.lConfirm),
+          content: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 400),
+            child: Text(message),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext, false),
+              child: Text(localString.lCancel),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(dialogContext, true),
+              child: Text(localString.lProceed),
+            ),
+          ],
+        );
+      },
+    ).then((value) => value == true);
   }
 }

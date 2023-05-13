@@ -51,6 +51,20 @@ class Todo extends IEntity<int, Todo> {
     );
   }
 
+  copyWithoutEmployee() {
+    return Todo(
+      id: id,
+      project: project,
+      task: task,
+      stage: stage,
+      dateCompleted: dateCompleted,
+      dateCreated: dateCreated,
+      dateStarted: dateStarted,
+      remarks: remarks,
+      assignedEmployee: null,
+    );
+  }
+
   @override
   Map<String, dynamic> asMap() {
     return {

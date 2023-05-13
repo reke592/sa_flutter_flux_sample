@@ -26,7 +26,26 @@ class SettingsView extends StatelessWidget {
         //
         // When a user selects a theme from the dropdown list, the
         // SettingsController is updated, which rebuilds the MaterialApp.
-        child: DropdownButton<ThemeMode>(
+        child: Wrap(
+          spacing: 8,
+          runSpacing: 32,
+          direction: Axis.vertical,
+          children: [
+            themeOptions(),
+            languageOptions(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget themeOptions() {
+    return Wrap(
+      spacing: 8,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text(localString.lTheme),
+        DropdownButton<ThemeMode>(
           // Read the selected themeMode from the controller
           value: controller.themeMode,
           isDense: true,
@@ -47,7 +66,32 @@ class SettingsView extends StatelessWidget {
             )
           ],
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget languageOptions() {
+    return Wrap(
+      spacing: 8,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text(localString.lLanguage),
+        DropdownButton<Locale>(
+          isDense: true,
+          value: controller.locale,
+          onChanged: (Locale? val) {
+            controller.setLocale(val!);
+          },
+          items: controller.supportedLocales
+              .map(
+                (e) => DropdownMenuItem(
+                  value: e,
+                  child: Text(e.languageCode),
+                ),
+              )
+              .toList(),
+        ),
+      ],
     );
   }
 }

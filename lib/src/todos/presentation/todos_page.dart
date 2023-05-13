@@ -79,66 +79,66 @@ class _TodosPage extends State<TodosPage> {
     }
   ];
 
-  final List<NavigationRailDestination> destinations = [
-    NavigationRailDestination(
-      icon: const Icon(Icons.info_outline),
-      label: Selector<TodoStore, Project>(
-        selector: (_, pvd) => pvd.project,
-        builder: (context, value, child) {
-          return Text(
-              '${localString.lProjectInfoScreenTitle} (${value.project})');
-        },
-      ),
-    ),
-    NavigationRailDestination(
-      icon: const Icon(Icons.note_alt_outlined),
-      label: Selector<TodoStore, int>(
-        selector: (_, pvd) => pvd.todos.length,
-        builder: (context, value, child) {
-          return Text(
-            '${localString.lTaskScreenTitle} ${value > 0 ? '($value)' : ''}',
-          );
-        },
-      ),
-    ),
-    NavigationRailDestination(
-      icon: const Icon(Icons.tag),
-      label: Selector<TodoStore, int>(
-        selector: (_, pvd) => pvd.tags.length,
-        builder: (context, value, child) {
-          return Text(
-            '${localString.lTagsScreenTitle} ${value > 0 ? '($value)' : ''}',
-          );
-        },
-      ),
-    ),
-    NavigationRailDestination(
-      icon: const Icon(Icons.category),
-      label: Selector<TodoStore, int>(
-        selector: (_, pvd) => pvd.stages.length,
-        builder: (context, value, child) {
-          return Text(
-            '${localString.lStagesScreenTitle} ${value > 0 ? '($value)' : ''}',
-          );
-        },
-      ),
-    ),
-    NavigationRailDestination(
-      icon: const Icon(Icons.group),
-      label: Selector<TodoStore, int>(
-        selector: (_, pvd) => pvd.manpower.length,
-        builder: (context, value, child) {
-          return Text(
-            '${localString.lManpowerScreenTitle} ${value > 0 ? '($value)' : ''}',
-          );
-        },
-      ),
-    ),
-    NavigationRailDestination(
-      icon: const Icon(Icons.settings),
-      label: Text(localString.lSettings),
-    ),
-  ];
+  List<NavigationRailDestination> get destinations => [
+        NavigationRailDestination(
+          icon: const Icon(Icons.info_outline),
+          label: Selector<TodoStore, Project>(
+            selector: (_, pvd) => pvd.project,
+            builder: (context, value, child) {
+              return Text(
+                  '${localString.lProjectInfoScreenTitle} (${value.project})');
+            },
+          ),
+        ),
+        NavigationRailDestination(
+          icon: const Icon(Icons.note_alt_outlined),
+          label: Selector<TodoStore, int>(
+            selector: (_, pvd) => pvd.todos.length,
+            builder: (context, value, child) {
+              return Text(
+                '${localString.lTaskScreenTitle} ${value > 0 ? '($value)' : ''}',
+              );
+            },
+          ),
+        ),
+        NavigationRailDestination(
+          icon: const Icon(Icons.tag),
+          label: Selector<TodoStore, int>(
+            selector: (_, pvd) => pvd.tags.length,
+            builder: (context, value, child) {
+              return Text(
+                '${localString.lTagsScreenTitle} ${value > 0 ? '($value)' : ''}',
+              );
+            },
+          ),
+        ),
+        NavigationRailDestination(
+          icon: const Icon(Icons.category),
+          label: Selector<TodoStore, int>(
+            selector: (_, pvd) => pvd.stages.length,
+            builder: (context, value, child) {
+              return Text(
+                '${localString.lStagesScreenTitle} ${value > 0 ? '($value)' : ''}',
+              );
+            },
+          ),
+        ),
+        NavigationRailDestination(
+          icon: const Icon(Icons.group),
+          label: Selector<TodoStore, int>(
+            selector: (_, pvd) => pvd.manpower.length,
+            builder: (context, value, child) {
+              return Text(
+                '${localString.lManpowerScreenTitle} ${value > 0 ? '($value)' : ''}',
+              );
+            },
+          ),
+        ),
+        NavigationRailDestination(
+          icon: const Icon(Icons.settings),
+          label: Text(localString.lSettings),
+        ),
+      ];
 
   @override
   void initState() {

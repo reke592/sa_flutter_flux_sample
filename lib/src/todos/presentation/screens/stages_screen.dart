@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
+import 'package:sa_flutter_flux_sample/src/todos/presentation/todo_dialogs.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/data/stage.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 
@@ -20,10 +21,16 @@ class StagesScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
+              var stage = list[index];
               return ListTile(
                 dense: true,
-                title: Text(list[index].name),
-                onTap: () {},
+                title: Text(
+                  '${stage.name} ${stage.isInitial ? '(${localString.lInitialStage})' : ''} ',
+                ),
+                onTap: () => TodoDialogs.showStageForm(
+                  context,
+                  data: stage,
+                ),
               );
             },
           );

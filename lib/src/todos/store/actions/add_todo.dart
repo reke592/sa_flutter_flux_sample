@@ -1,4 +1,5 @@
 import 'package:sa_flutter_flux/sa_flutter_flux.dart';
+import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/data/employee.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/data/project.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/data/stage.dart';
@@ -31,7 +32,7 @@ class AddTodo extends StoreAction<TodoStore, AddTodoParams, Todo> {
   @override
   Future<Todo> effect(TodoStore store) async {
     if (payload.task.trim().isEmpty) {
-      throw 'Task description is required';
+      throw localString.eTaskDescriptionRequired;
     }
     return Todo(
       id: store.nextTodoId,

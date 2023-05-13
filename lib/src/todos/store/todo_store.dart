@@ -36,6 +36,7 @@ class TodoStore extends FluxStore {
   List<Tag> get tags => List.of(_tags);
   List<Todo> todosPerStage(Stage stage) =>
       List.of(_todos.where((element) => element.stage.id == stage.id)).toList();
+  Stage get initialStage => _stages.firstWhere((element) => element.isInitial);
 
   @override
   Future<void> commit(String event, dynamic result) {
@@ -83,6 +84,9 @@ class TodoStore extends FluxStore {
           project: updated.project,
           stage: updated.stage,
         );
+        if (updated.stage.isInitial) {
+          _todos[current] = _todos[current].copyWithoutEmployee();
+        }
       },
       // stages
       StageTypeEvents.loading: (payload) {
@@ -91,6 +95,25 @@ class TodoStore extends FluxStore {
       StageTypeEvents.loaded: (payload) {
         _stages.clear();
         _stages.addAll(payload as List<Stage>);
+      },
+      StageTypeEvents.created: (payload) {
+        _stages.add(payload as Stage);
+      },
+      StageTypeEvents.updated: (payload) {
+        var updated = payload as Stage;
+        var current = _stages.indexWhere((element) => element.id == updated.id);
+        _stages[current] = _stages[current].copyWith(
+          id: updated.id,
+          name: updated.name,
+          isInitial: updated.isInitial,
+        );
+        // update previous initial stage
+        if (updated.isInitial) {
+          var currentInitial =
+              _stages.indexWhere((e) => e.isInitial && e.id != updated.id);
+          _stages[currentInitial] =
+              _stages[currentInitial].copyWith(isInitial: false);
+        }
       },
       // tags
       TagEvents.loading: (payload) {

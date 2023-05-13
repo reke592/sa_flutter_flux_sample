@@ -15,6 +15,7 @@ abstract class StageTypeEvents {
   static const loading = '$_event/loading';
   static const loaded = '$_event/loaded';
   static const created = '$_event/created';
+  static const updated = '$_event/updated';
   static const deleted = '$_event/deleted';
 }
 

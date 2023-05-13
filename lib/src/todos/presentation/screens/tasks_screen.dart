@@ -40,9 +40,10 @@ class _TasksScreen extends State<TasksScreen> {
               ),
             ),
             body: TabBarView(
-              children: stages.map((e) {
+              children: stages.map((stage) {
                 return Selector<TodoStore, List<Todo>>(
-                  selector: (_, pvd) => pvd.todosPerStage(e),
+                  key: PageStorageKey(stage.id),
+                  selector: (_, pvd) => pvd.todosPerStage(stage),
                   builder: (context, list, child) {
                     debugPrint('$runtimeType.build');
                     return ListView.builder(

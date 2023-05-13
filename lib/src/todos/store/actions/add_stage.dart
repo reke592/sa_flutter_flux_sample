@@ -1,0 +1,31 @@
+import 'package:sa_flutter_flux/sa_flutter_flux.dart';
+import 'package:sa_flutter_flux_sample/src/todos/store/data/stage.dart';
+import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
+import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
+
+class AddStageParams {
+  final String name;
+  final bool isInitial;
+  AddStageParams({
+    required this.name,
+    required this.isInitial,
+  });
+}
+
+class AddStage extends StoreAction<TodoStore, AddStageParams, Stage> {
+  AddStage(super.payload);
+
+  @override
+  Future<void> apply(TodoStore store, Stage result) {
+    return store.commit(StageTypeEvents.created, result);
+  }
+
+  @override
+  Future<Stage> effect(TodoStore store) async {
+    return Stage(
+      id: store.nextStageId,
+      name: payload.name,
+      isInitial: payload.isInitial,
+    );
+  }
+}

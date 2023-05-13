@@ -1,0 +1,40 @@
+{
+    "@@locale": "fil",
+    "appTitle": "sa_flutter_flux_sample",
+    "@appTitle": {
+        "description": "Ang pamagat ng aplikasyon"
+    },
+    "lLanguage": "Wika",
+    "lTheme": "Tema",
+    "lTodosPageTitle": "Mga Gawain",
+    "lTaskScreenTitle": "Mga Gawain",
+    "lTagsScreenTitle": "Mga Tag",
+    "lStagesScreenTitle": "Mga Yugto",
+    "lSettings": "Mga Setting",
+    "lCreateTask": "Lumikha ng Gawain",
+    "lCreateStage": "Lumikha ng Yugto",
+    "lTaskInfo": "Impormasyon ng Gawain",
+    "lAssignTask": "Italaga sa",
+    "lAssignStage": "Yugto",
+    "lInitialStage": "Umpisang Yugto",
+    "lManpowerScreenTitle": "Lakas-Tao",
+    "lProjectInfoScreenTitle": "Impormasyon ng Proyekto",
+    "lError": "Error",
+    "lConfirm": "Kumpirmahin",
+    "lProceed": "Magpatuloy",
+    "lCancel": "Kanselahin",
+    "lDiscard": "I-discard",
+    "confirmUpdateInitialStage": "Ito ay magpapalit sa umpisang yugto {stageName} kapag lumilikha ng bagong Gawain, gusto mo bang magpatuloy?",
+    "@confirmUpdateInitialStage": {
+        "description": "mensahe sa pagkumpirma para sa Yugto kapag ang halaga ng isInitial ay pantay sa true",
+        "placeholders": {
+            "stageName": {
+                "type": "String"
+            }
+        }
+    },
+    "eTaskDescriptionRequired": "Kinakailangan ang paglalarawan ng Gawain",
+    "eAtleastOneInitialStage": "Dapat mayroong hindi bababa sa isang umpisang yugto",
+    "eMustUpdateStage": "Kailangang i-update ang yugto",
+    "eMustAssignManpower": "Kailangang italaga ang lakas-tao"
+}

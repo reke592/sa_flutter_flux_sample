@@ -94,7 +94,7 @@ class _TodoForm extends State<TodoForm> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Discard'),
+          child: Text(localString.lDiscard),
         ),
         ElevatedButton(
           onPressed: () {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sa_flutter_flux_sample/src/localization/local_string.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 import 'settings_service.dart';
 
 /// A class that many Widgets can interact with to read user settings, update
@@ -46,5 +48,17 @@ class SettingsController with ChangeNotifier {
     // Persist the changes to a local database or the internet using the
     // SettingService.
     await _settingsService.updateThemeMode(newThemeMode);
+  }
+
+  Locale _locale = AppLocalizations.supportedLocales
+      .firstWhere((element) => element.languageCode == 'en');
+  Locale get locale => _locale;
+  List<Locale> get supportedLocales => AppLocalizations.supportedLocales;
+
+  Future<void> setLocale(Locale locale) async {
+    if (!AppLocalizations.supportedLocales.contains(locale)) return;
+    _locale = locale;
+    localString = lookupAppLocalizations(locale);
+    notifyListeners();
   }
 }
