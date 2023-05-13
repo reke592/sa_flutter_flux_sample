@@ -34,6 +34,13 @@ class AddTodo extends StoreAction<TodoStore, AddTodoParams, Todo> {
     if (payload.task.trim().isEmpty) {
       throw localString.eTaskDescriptionRequired;
     }
+    if (payload.assignedEmployee != null &&
+        (payload.stage?.isInitial == true || payload.stage == null)) {
+      throw localString.eMustUpdateStage;
+    }
+    if (payload.stage?.isInitial == false && payload.assignedEmployee == null) {
+      throw localString.eMustAssignManpower;
+    }
     return Todo(
       id: store.nextTodoId,
       project: payload.project,

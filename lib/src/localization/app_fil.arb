@@ -1,7 +1,7 @@
 {
     "@@locale": "fil",
-    "appTitle": "sa_flutter_flux_sample",
-    "@appTitle": {
+        "appTitle": "sa_flutter_flux_sample",
+        "@appTitle": {
         "description": "Ang pamagat ng aplikasyon"
     },
     "lLanguage": "Wika",
@@ -14,7 +14,7 @@
     "lCreateTask": "Lumikha ng Gawain",
     "lCreateStage": "Lumikha ng Yugto",
     "lTaskInfo": "Impormasyon ng Gawain",
-    "lAssignTask": "Italaga sa",
+    "lAssignTask": "Italaga ang Gawain",
     "lAssignStage": "Yugto",
     "lInitialStage": "Umpisang Yugto",
     "lManpowerScreenTitle": "Lakas-Tao",
