@@ -11,7 +11,7 @@ class ManpowerScreenFab extends StatelessWidget {
     return Selector<ResponsiveProvider, Responsive>(
       selector: (_, pvd) => pvd.type,
       builder: (context, type, child) {
-        bool isMobile = type != Responsive.mobile;
+        bool isNotMobile = type != Responsive.mobile;
         return Wrap(
           spacing: 8,
           children: [
@@ -26,7 +26,7 @@ class ManpowerScreenFab extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     const Icon(Icons.add),
-                    if (isMobile) const Text('Add Manpower'),
+                    if (isNotMobile) const Text('Add Manpower'),
                   ],
                 ),
               ),
@@ -46,7 +46,7 @@ class ManpowerScreenFab extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     const Icon(Icons.reduce_capacity),
-                    if (isMobile) const Text('Remove Manpower'),
+                    if (isNotMobile) const Text('Remove Manpower'),
                   ],
                 ),
               ),

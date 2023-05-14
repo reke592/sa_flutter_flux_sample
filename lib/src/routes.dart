@@ -65,7 +65,7 @@ class Routes {
             pageBuilder: noTransition(
               builder: (context, state) {
                 return SettingsView(
-                  controller: context.watch<SettingsController>(),
+                  controller: context.read<SettingsController>(),
                 );
               },
             ),
