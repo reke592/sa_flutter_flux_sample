@@ -14,8 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  sa_flutter_flux:
-    path: ../sa_flutter_flux
+  sa_flutter_flux: ^0.0.1
   provider: ^6.0.5
   go_router: ^7.0.0
   intl: ^0.17.0

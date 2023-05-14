@@ -168,9 +168,10 @@ packages:
   sa_flutter_flux:
     dependency: "direct main"
     description:
-      path: "../sa_flutter_flux"
-      relative: true
-    source: path
+      name: sa_flutter_flux
+      sha256: "6e7f8e3dfb1fde5e5158bfa43c99f54c81a6b2e198344d21aa0dc2de4772a046"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1"
   sky_engine:
     dependency: transitive
