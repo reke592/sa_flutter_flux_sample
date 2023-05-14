@@ -97,7 +97,15 @@ class TodoStore extends FluxStore {
         _stages.addAll(payload as List<Stage>);
       },
       StageTypeEvents.created: (payload) {
-        _stages.add(payload as Stage);
+        var newStage = payload as Stage;
+        _stages.add(newStage);
+        // update previous initial stage
+        if (newStage.isInitial) {
+          var currentInitial =
+              _stages.indexWhere((e) => e.isInitial && e.id != newStage.id);
+          _stages[currentInitial] =
+              _stages[currentInitial].copyWith(isInitial: false);
+        }
       },
       StageTypeEvents.updated: (payload) {
         var updated = payload as Stage;
