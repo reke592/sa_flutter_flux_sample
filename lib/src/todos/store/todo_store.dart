@@ -22,17 +22,25 @@ class TodoStore extends FluxStore {
   final List<Employee> _manpower = [];
 
   // computed
-  Project get project => _project;
+  // dummy next entity ids
   int get nextTodoId => _todos.length + 1;
-  bool get isLoadingTodos => _isLoadingTodos;
-  List<Todo> get todos => List.of(_todos);
-  bool get isLoadingManpower => _isLoadingManpower;
-  List<Employee> get manpower => List.of(_manpower);
   int get nextStageId => _stages.length + 1;
-  bool get isLoadingStages => _isLoadingStages;
-  List<Stage> get stages => List.of(_stages);
   int get nextTaskPriorityId => _tags.length + 1;
+  // loading indicators
+  bool get isLoadingTodos => _isLoadingTodos;
+  bool get isLoadingManpower => _isLoadingManpower;
+  bool get isLoadingStages => _isLoadingStages;
   bool get isLoadingTags => _isLoadingTags;
+  // record counter
+  int get countTodos => _todos.length;
+  int get countManpower => _manpower.length;
+  int get countStages => _stages.length;
+  int get countTags => _tags.length;
+  // properties needed to optimize, may cause performance implications
+  Project get project => _project;
+  List<Todo> get todos => List.of(_todos);
+  List<Employee> get manpower => List.of(_manpower);
+  List<Stage> get stages => List.of(_stages);
   List<Tag> get tags => List.of(_tags);
   List<Todo> todosPerStage(Stage stage) =>
       List.of(_todos.where((element) => element.stage.id == stage.id)).toList();

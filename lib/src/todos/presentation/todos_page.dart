@@ -93,7 +93,7 @@ class _TodosPage extends State<TodosPage> {
         NavigationRailDestination(
           icon: const Icon(Icons.note_alt_outlined),
           label: Selector<TodoStore, int>(
-            selector: (_, pvd) => pvd.todos.length,
+            selector: (_, pvd) => pvd.countTodos,
             builder: (context, value, child) {
               return Text(
                 '${localString.lTaskScreenTitle} ${value > 0 ? '($value)' : ''}',
@@ -104,7 +104,7 @@ class _TodosPage extends State<TodosPage> {
         NavigationRailDestination(
           icon: const Icon(Icons.tag),
           label: Selector<TodoStore, int>(
-            selector: (_, pvd) => pvd.tags.length,
+            selector: (_, pvd) => pvd.countTags,
             builder: (context, value, child) {
               return Text(
                 '${localString.lTagsScreenTitle} ${value > 0 ? '($value)' : ''}',
@@ -115,7 +115,7 @@ class _TodosPage extends State<TodosPage> {
         NavigationRailDestination(
           icon: const Icon(Icons.category),
           label: Selector<TodoStore, int>(
-            selector: (_, pvd) => pvd.stages.length,
+            selector: (_, pvd) => pvd.countStages,
             builder: (context, value, child) {
               return Text(
                 '${localString.lStagesScreenTitle} ${value > 0 ? '($value)' : ''}',
@@ -126,7 +126,7 @@ class _TodosPage extends State<TodosPage> {
         NavigationRailDestination(
           icon: const Icon(Icons.group),
           label: Selector<TodoStore, int>(
-            selector: (_, pvd) => pvd.manpower.length,
+            selector: (_, pvd) => pvd.countManpower,
             builder: (context, value, child) {
               return Text(
                 '${localString.lManpowerScreenTitle} ${value > 0 ? '($value)' : ''}',
