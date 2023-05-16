@@ -4,19 +4,15 @@ import 'package:sa_flutter_flux_sample/src/todos/store/data/stage.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 
-class UpdateStageParams {
+class UpdateStage extends StoreAction<TodoStore, Stage> {
   final int id;
   final String name;
   final bool isInitial;
-  UpdateStageParams({
+  UpdateStage({
     required this.id,
     required this.name,
     required this.isInitial,
   });
-}
-
-class UpdateStage extends StoreAction<TodoStore, UpdateStageParams, Stage> {
-  UpdateStage(super.payload);
 
   @override
   Future<void> apply(TodoStore store, Stage result) {
@@ -25,16 +21,16 @@ class UpdateStage extends StoreAction<TodoStore, UpdateStageParams, Stage> {
 
   @override
   Future<Stage> effect(TodoStore store) async {
-    if (payload.isInitial == false &&
+    if (isInitial == false &&
         store.stages.isNotEmpty &&
-        !store.stages.any((e) => e.isInitial && e.id != payload.id)) {
+        !store.stages.any((e) => e.isInitial && e.id != id)) {
       throw localString.eAtleastOneInitialStage;
     }
 
     return Stage(
-      id: payload.id,
-      name: payload.name,
-      isInitial: payload.isInitial,
+      id: id,
+      name: name,
+      isInitial: isInitial,
     );
   }
 }

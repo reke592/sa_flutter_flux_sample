@@ -3,17 +3,13 @@ import 'package:sa_flutter_flux_sample/src/todos/store/data/stage.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 
-class AddStageParams {
+class AddStage extends StoreAction<TodoStore, Stage> {
   final String name;
   final bool isInitial;
-  AddStageParams({
+  AddStage({
     required this.name,
     required this.isInitial,
   });
-}
-
-class AddStage extends StoreAction<TodoStore, AddStageParams, Stage> {
-  AddStage(super.payload);
 
   @override
   Future<void> apply(TodoStore store, Stage result) {
@@ -24,8 +20,8 @@ class AddStage extends StoreAction<TodoStore, AddStageParams, Stage> {
   Future<Stage> effect(TodoStore store) async {
     return Stage(
       id: store.nextStageId,
-      name: payload.name,
-      isInitial: payload.isInitial,
+      name: name,
+      isInitial: isInitial,
     );
   }
 }

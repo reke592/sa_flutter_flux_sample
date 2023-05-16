@@ -3,15 +3,14 @@ import 'package:sa_flutter_flux_sample/src/todos/store/data/project.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 
-class LoadProjectParams {
+class LoadProjectParams {}
+
+class LoadProject extends StoreAction<TodoStore, Project> {
   int projectId;
-  LoadProjectParams({
+
+  LoadProject({
     required this.projectId,
   });
-}
-
-class LoadProject extends StoreAction<TodoStore, LoadProjectParams, Project> {
-  LoadProject(super.payload);
 
   @override
   Future<void> apply(TodoStore store, Project result) {
@@ -21,7 +20,7 @@ class LoadProject extends StoreAction<TodoStore, LoadProjectParams, Project> {
   @override
   Future<Project> effect(TodoStore store) async {
     return Project(
-      id: payload.projectId,
+      id: projectId,
       project: 'Project X',
       dateKickOff: DateTime(2023, 5, 11),
       dateLive: DateTime(2024, 1, 1),

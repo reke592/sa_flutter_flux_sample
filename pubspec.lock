@@ -169,10 +169,10 @@ packages:
     dependency: "direct main"
     description:
       name: sa_flutter_flux
-      sha256: "6e7f8e3dfb1fde5e5158bfa43c99f54c81a6b2e198344d21aa0dc2de4772a046"
+      sha256: "2d0bfac0a6acf404e187e1acb952d56d1300153f4897eeec39b45c4360d9e6d1"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.3"
   sky_engine:
     dependency: transitive
     description: flutter

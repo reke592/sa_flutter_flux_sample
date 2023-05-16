@@ -3,12 +3,7 @@ import 'package:sa_flutter_flux_sample/src/todos/store/data/employee.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 
-class LoadManpowerParam {}
-
-class LoadManpower
-    extends StoreAction<TodoStore, LoadManpowerParam, List<Employee>> {
-  LoadManpower(super.payload);
-
+class LoadManpower extends StoreAction<TodoStore, List<Employee>> {
   @override
   Future<void> apply(TodoStore store, List result) {
     return store.commit(ManpowerEvents.loaded, result);

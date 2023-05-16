@@ -3,13 +3,9 @@ import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 import 'package:sa_flutter_flux/sa_flutter_flux.dart';
 
-class LoadTagsParams {
+class LoadTags extends StoreAction<TodoStore, List<Tag>> {
   int projectId;
-  LoadTagsParams({required this.projectId});
-}
-
-class LoadTags extends StoreAction<TodoStore, LoadTagsParams, List<Tag>> {
-  LoadTags(super.payload);
+  LoadTags({required this.projectId});
 
   @override
   Future<void> apply(store, result) {

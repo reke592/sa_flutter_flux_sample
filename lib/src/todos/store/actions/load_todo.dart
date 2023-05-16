@@ -3,13 +3,10 @@ import 'package:sa_flutter_flux_sample/src/todos/store/todo_store.dart';
 import 'package:sa_flutter_flux_sample/src/todos/store/type_events.dart';
 import 'package:sa_flutter_flux/sa_flutter_flux.dart';
 
-class LoadTodoParams {
+class LoadTodo extends StoreAction<TodoStore, List<Todo>> {
   int projectId;
-  LoadTodoParams({required this.projectId});
-}
 
-class LoadTodo extends StoreAction<TodoStore, LoadTodoParams, List<Todo>> {
-  LoadTodo(super.payload);
+  LoadTodo({required this.projectId});
 
   @override
   Future<void> apply(store, result) {

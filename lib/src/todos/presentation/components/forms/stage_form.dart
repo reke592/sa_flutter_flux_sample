@@ -76,10 +76,8 @@ class _StageForm extends State<StageForm> {
               store
                   .dispatch(
                     AddStage(
-                      AddStageParams(
-                        name: _controller.text,
-                        isInitial: _isInititial,
-                      ),
+                      name: _controller.text,
+                      isInitial: _isInititial,
                     ),
                     onError: (error, stackTrace) =>
                         MessageDialog.showError(context, error, stackTrace),
@@ -89,11 +87,9 @@ class _StageForm extends State<StageForm> {
               store
                   .dispatch(
                     UpdateStage(
-                      UpdateStageParams(
-                        id: widget.data!.id,
-                        name: _controller.text,
-                        isInitial: _isInititial,
-                      ),
+                      id: widget.data!.id,
+                      name: _controller.text,
+                      isInitial: _isInititial,
                     ),
                     onError: (error, stackTrace) =>
                         MessageDialog.showError(context, error, stackTrace),

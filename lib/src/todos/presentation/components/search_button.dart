@@ -16,7 +16,7 @@ class SearchButton extends StatelessWidget {
           onPressed: isLoading
               ? null
               : () {
-                  store.dispatch(LoadTodo(LoadTodoParams(projectId: 1)));
+                  store.dispatch(LoadTodo(projectId: 1));
                 },
           icon: const Icon(Icons.search),
         );

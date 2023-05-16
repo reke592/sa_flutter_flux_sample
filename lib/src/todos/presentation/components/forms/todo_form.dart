@@ -103,12 +103,10 @@ class _TodoForm extends State<TodoForm> {
               store
                   .dispatch(
                     AddTodo(
-                      AddTodoParams(
-                        project: store.project,
-                        task: controller.text,
-                        assignedEmployee: employee,
-                        stage: stage,
-                      ),
+                      project: store.project,
+                      task: controller.text,
+                      assignedEmployee: employee,
+                      stage: stage,
                     ),
                     onError: (error, stackTrace) =>
                         MessageDialog.showError(context, error, stackTrace),
@@ -118,13 +116,11 @@ class _TodoForm extends State<TodoForm> {
               store
                   .dispatch(
                     UpdateTodo(
-                      UpdateTodoParams(
-                        id: widget.data!.id,
-                        project: store.project,
-                        task: controller.text,
-                        assignedEmployee: employee,
-                        stage: stage,
-                      ),
+                      id: widget.data!.id,
+                      project: store.project,
+                      task: controller.text,
+                      assignedEmployee: employee,
+                      stage: stage,
                     ),
                     onError: (error, stackTrace) =>
                         MessageDialog.showError(context, error, stackTrace),
